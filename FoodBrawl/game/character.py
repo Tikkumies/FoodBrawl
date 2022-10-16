@@ -20,8 +20,7 @@ class Character:
     def reset_hp(self):
         self.hp = self.max_hp
 
-
     def hp_loss(self, attacker, defender, screen):
         defender.hp -= attacker.attack
         defender.healthbar.width = (defender.hp / defender.max_hp) * (screen.width/2 -100)
-        print(defender.healthbar.width)
+        

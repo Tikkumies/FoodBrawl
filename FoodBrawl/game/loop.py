@@ -25,8 +25,6 @@ class Loop:
                     if self.pygame.mouse.get_pressed()[0] and screen.exit_button.collidepoint(self.pygame.mouse.get_pos()):
                         running = False
                     if self.pygame.mouse.get_pressed()[0] and screen.start_button.collidepoint(self.pygame.mouse.get_pos()):
-                        character1.reset_hp()
-                        character2.reset_hp()
                         screen.game_screen_selection = "game"
 
                 case "game":
@@ -61,6 +59,8 @@ class Loop:
                     self.draw.blit(screen, character2.image, 50, 400)
                     self.draw.draw_health_bar(character2, screen.width - (screen.width - 50), 50)
                     self.draw.draw_health_bar(character1, (screen.width / 2 + 50) + character1_hp , 50)
+                    self.draw.blit(screen, character2.healthbar_name_text, screen.width - (screen.width - 50), 100)
+                    self.draw.blit(screen, character1.healthbar_name_text, screen.width - 170, 100)
                     self.draw.draw_rect(screen.new_game_button, screen.new_game_image, 770, 500)
                     self.draw.draw_rect(screen.menu_button, screen.menu_image, screen.new_game_button.x, screen.new_game_button.y + screen.new_game_button.h)
                     if character1.hp < 1:
@@ -68,6 +68,9 @@ class Loop:
                     elif character2.hp < 1:
                         self.draw.blit(screen, character1.winner_name_text, 670, screen.height / 3)
                     if self.pygame.mouse.get_pressed()[0] and screen.menu_button.collidepoint(self.pygame.mouse.get_pos()):
+                        character1.reset_hp()
+                        character2.reset_hp()
+                        time = 0
                         screen.game_screen_selection = "menu"
 
             self.pygame.display.update()
