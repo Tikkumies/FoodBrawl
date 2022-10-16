@@ -40,22 +40,24 @@ class Loop:
                     self.draw.draw_surface(screen, screen.background, 0, 0)
                     self.draw.draw_health_bar(character2, screen.width - (screen.width - 50), 50)
                     self.draw.draw_health_bar(character1, (screen.width / 2 + 50) + character1_hp , 50)
-                    self.draw.draw_rect(character1.rect, character1.image, 800, 200) 
+                    self.draw.draw_rect(character1.rect, character1.image, 800, 100) 
                     self.draw.draw_rect(character2.rect, character2.image, 100, 400)
                     time += 1
                     # Check if characters health is zero or less 
                     if character1.hp < 1 or character2.hp < 1:
                         screen.game_screen_selection = "game over"
-                    print(character2.hp)
+                    print(character1.hp)
 
                 case "game over":
                     self.draw.draw_surface(screen, screen.background, 0, 0)
                     self.draw.draw_rect(character1.rect, character1.image, 800, 200) 
                     self.draw.draw_rect(character2.rect, character2.image, 100, 400)
+                    self.draw.draw_health_bar(character2, screen.width - (screen.width - 50), 50)
+                    self.draw.draw_health_bar(character1, (screen.width / 2 + 50) + character1_hp , 50)
                     if character1.hp < 1:
                         print(character2.name + " wins")
                     elif character2.hp < 1:
                         print(character1.name + " wins")
 
             self.pygame.display.update()
-            self.pygame.time.wait(1)
+            self.pygame.time.wait(100)
