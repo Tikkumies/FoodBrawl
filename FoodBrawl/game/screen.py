@@ -1,9 +1,20 @@
 class Screen:
-    def __init__(self, width, heigth, background, logo, start_button, pygame):
+    def __init__(self, width, heigth, background, logo, start_image, exit_image, new_game_image, menu_image, pygame):
         self.background = pygame.image.load(background)
         self.logo = pygame.image.load(logo)
-        self.start_button_image = pygame.image.load(start_button)
+        
+        self.start_button_image = pygame.image.load(start_image)
         self.start_button = self.start_button_image.get_rect()
+
+        self.exit_button_image = pygame.image.load(exit_image)
+        self.exit_button = self.start_button_image.get_rect()
+
+        self.new_game_image = pygame.image.load(new_game_image)
+        self.new_game_button = self.new_game_image.get_rect()
+
+        self.menu_image = pygame.image.load(menu_image)
+        self.menu_button = self.menu_image.get_rect()
+
         self.width = width
         self.heigth = heigth
         self.screen = pygame.display.set_mode((self.width,self.heigth))

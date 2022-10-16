@@ -13,15 +13,20 @@ class Loop:
         time = 0
         while running:
             for event in self.pygame.event.get():
-                if event.type == self.pygame.QUIT:
+                if event.type == self.pygame.QUIT:   
                     running = False
 
             match screen.game_screen_selection:
                 case "menu":
                     self.draw.blit(screen, screen.background, 0, 0)
                     self.draw.blit(screen, screen.logo, 770, 100)
-                    self.draw.draw_rect(screen.start_button, screen.start_button_image, 710, 600)
+                    self.draw.draw_rect(screen.start_button, screen.start_button_image, 770, 500)
+                    self.draw.draw_rect(screen.exit_button, screen.exit_button_image, screen.start_button.x, screen.start_button.y + screen.start_button.h)
+                    if self.pygame.mouse.get_pressed()[0] and screen.exit_button.collidepoint(self.pygame.mouse.get_pos()):
+                        running = False
                     if self.pygame.mouse.get_pressed()[0] and screen.start_button.collidepoint(self.pygame.mouse.get_pos()):
+                        character1.reset_hp()
+                        character2.reset_hp()
                         screen.game_screen_selection = "game"
 
                 case "game":
@@ -56,10 +61,14 @@ class Loop:
                     self.draw.blit(screen, character2.image, 50, 400)
                     self.draw.draw_health_bar(character2, screen.width - (screen.width - 50), 50)
                     self.draw.draw_health_bar(character1, (screen.width / 2 + 50) + character1_hp , 50)
+                    self.draw.draw_rect(screen.new_game_button, screen.new_game_image, 770, 500)
+                    self.draw.draw_rect(screen.menu_button, screen.menu_image, screen.new_game_button.x, screen.new_game_button.y + screen.new_game_button.h)
                     if character1.hp < 1:
-                        self.draw.blit(screen, character2.winner_name_text, 600, screen.heigth / 3)
+                        self.draw.blit(screen, character2.winner_name_text, 700, screen.heigth / 3)
                     elif character2.hp < 1:
-                        self.draw.blit(screen, character1.winner_name_text, 600, screen.height / 3)
+                        self.draw.blit(screen, character1.winner_name_text, 670, screen.height / 3)
+                    if self.pygame.mouse.get_pressed()[0] and screen.menu_button.collidepoint(self.pygame.mouse.get_pos()):
+                        screen.game_screen_selection = "menu"
 
             self.pygame.display.update()
             self.pygame.time.wait(100)

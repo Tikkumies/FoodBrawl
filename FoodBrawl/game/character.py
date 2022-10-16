@@ -15,9 +15,12 @@ class Character:
         self.healthbar_name_font = pygame.font.Font('freesansbold.ttf', 32)
         self.healthbar_name_text = self.healthbar_name_font.render(name, False, "red" )
         self.winner_font = pygame.font.Font('freesansbold.ttf', 72)
-        self.winner_name_text = self.winner_font.render(name.upper() + " WINS!", False, "red", "white" )
+        self.winner_name_text = self.winner_font.render(name.upper() + " WINS!", False, "red", (10,19,22) )
 
-        
+    def reset_hp(self):
+        self.hp = self.max_hp
+
+
     def hp_loss(self, attacker, defender, screen):
         defender.hp -= attacker.attack
         defender.healthbar.width = (defender.hp / defender.max_hp) * (screen.width/2 -100)
