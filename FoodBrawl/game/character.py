@@ -1,0 +1,19 @@
+class Character:
+    def __init__ (self, name, image, image_fire, hp, attack, defence, fatness, screen, pygame):
+        self.name = name
+        self.hp = hp + fatness
+        self.max_hp = self.hp
+        self.attack = attack
+        self.defence = defence
+        self.fatness = fatness
+        self.delay = (attack + defence + fatness)
+        self.image = pygame.image.load(image).convert_alpha()
+        self.rect = self.image.get_rect()
+        self.image_fire = pygame.image.load(image_fire).convert_alpha()
+        self.rect_fire = self.image_fire.get_rect()
+        self.healthbar = pygame.Rect(50, 50, screen.width/2 - 100, 50)
+        
+    def hp_loss(self, attacker, defender, screen):
+        defender.hp -= attacker.attack
+        defender.healthbar.width = (defender.hp / defender.max_hp) * (screen.width/2 -100)
+        print(defender.healthbar.width)
