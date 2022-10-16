@@ -24,9 +24,3 @@ class get_food_stats:
         result = int(float(parse_start.partition(",")[0]))
         print(result)
         return result
-
-if __name__ == "__main__":
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
-    url = "https://fineli.fi/fineli/api/v1/foods/"
-    food_stats = get_food_stats(headers, url)
-    food_stats.get_stat("11049", "carbs")

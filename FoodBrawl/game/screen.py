@@ -9,3 +9,11 @@ class Screen:
         self.screen = pygame.display.set_mode((self.width,self.heigth))
         pygame.display.set_caption("Food Brawl")
         self.game_screen_selection = "menu"
+
+if __name__ == "__main":
+    import pygame
+    import os
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    screen = Screen(1920,1080, "images/Colosseum_Arena.jpg", "images/FoodBrawl.png", "images/StartButton.png", pygame)
+    print(screen.screen)
+

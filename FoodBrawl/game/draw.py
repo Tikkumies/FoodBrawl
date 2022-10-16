@@ -7,7 +7,7 @@ class Draw:
         rect.x = x
         rect.y = y
         self.screen.screen.blit(image, rect)
-        
+
     def draw_health_bar(self, character, x, y):
         character.healthbar.x = x
         character.healthbar.y = y
@@ -20,5 +20,5 @@ class Draw:
             color = "green"
         self.pygame.draw.rect(self.screen.screen, color, character.healthbar)
 
-    def draw_surface(self, screen, image, x, y):
-        screen.screen.blit(image,(x, y))
+    def blit(self, screen, surface_or_image, x, y):
+        screen.screen.blit(surface_or_image,(x, y))
