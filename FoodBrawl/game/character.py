@@ -8,14 +8,13 @@ class Character:
         self.fatness = fatness
         self.delay = (attack + defence + fatness)
         self.image = pygame.image.load(image).convert_alpha()
-        self.rect = self.image.get_rect()
         self.image_fire = pygame.image.load(image_fire).convert_alpha()
-        self.rect_fire = self.image_fire.get_rect()
         self.healthbar = pygame.Rect(50, 50, screen.width/2 - 100, 50)
         self.healthbar_name_font = pygame.font.Font('freesansbold.ttf', 32)
         self.healthbar_name_text = self.healthbar_name_font.render(name, False, "red" )
         self.winner_font = pygame.font.Font('freesansbold.ttf', 72)
         self.winner_name_text = self.winner_font.render(name.upper() + " WINS!", False, "red", (10,19,22) )
+    
 
     def reset_hp(self):
         self.hp = self.max_hp

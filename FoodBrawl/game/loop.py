@@ -48,10 +48,14 @@ class Loop:
                     self.draw.blit(screen, character1.healthbar_name_text, screen.width - 170, 100)
                     self.draw.blit(screen, character1.image, 850 , 200)
                     self.draw.blit(screen, character2.image, 50, 400)
-                    time += 1
+                    if time == char2_attack_time:
+                        self.draw.blit(screen, character2.image_fire, 390 , 530)
+                    if time == char1_attack_time:
+                        self.draw.blit(screen, character1.image_fire, 290 , 470)
                     # Check if characters health is zero or less 
                     if character1.hp < 1 or character2.hp < 1:
                         screen.game_screen_selection = "game over"
+                    time += 1
 
                 case "game over":
                     self.draw.blit(screen, screen.background, 0, 0)
@@ -70,7 +74,6 @@ class Loop:
                     if self.pygame.mouse.get_pressed()[0] and screen.menu_button.collidepoint(self.pygame.mouse.get_pos()):
                         character1.reset_hp()
                         character2.reset_hp()
-                        time = 0
                         screen.game_screen_selection = "menu"
 
             self.pygame.display.update()
