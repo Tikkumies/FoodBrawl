@@ -48,6 +48,7 @@ class Loop:
                     self.draw.blit(screen, character1.healthbar_name_text, screen.width - 170, 100)
                     self.draw.blit(screen, character1.image, 850 , 200)
                     self.draw.blit(screen, character2.image, 50, 400)
+                    # Attack animations
                     if time == char2_attack_time:
                         self.draw.blit(screen, character2.image_fire, 390 , 530)
                     if time == char1_attack_time:
@@ -67,18 +68,25 @@ class Loop:
                     self.draw.blit(screen, character1.healthbar_name_text, screen.width - 170, 100)
                     self.draw.draw_rect(screen.new_game_button, screen.new_game_image, 770, 500)
                     self.draw.draw_rect(screen.menu_button, screen.menu_image, screen.new_game_button.x, screen.new_game_button.y + screen.new_game_button.h)
+                    # Winner name blitting
                     if character1.hp < 1:
                         self.draw.blit(screen, character2.winner_name_text, 700, screen.heigth / 3)
                     elif character2.hp < 1:
                         self.draw.blit(screen, character1.winner_name_text, 670, screen.height / 3)
+                    # Go back to menu
                     if self.pygame.mouse.get_pressed()[0] and screen.menu_button.collidepoint(self.pygame.mouse.get_pos()):
                         character1.reset_character()
                         character2.reset_character()
-                        char1_attack_time = 0
-                        char2_attack_time = 0
                         screen.game_screen_selection = "menu"
-                        time = 0
-            
-            print(character1.hp)
+                    # Start new game
+                    if self.pygame.mouse.get_pressed()[0] and screen.new_game_button.collidepoint(self.pygame.mouse.get_pos()):
+                        character1.reset_character()
+                        character2.reset_character()
+                        screen.game_screen_selection = "game"
+
+                    char1_attack_time = 0
+                    char2_attack_time = 0 
+                    time = 0
+
             self.pygame.display.update()
             self.pygame.time.wait(100)
