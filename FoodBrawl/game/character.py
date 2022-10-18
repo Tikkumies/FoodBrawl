@@ -7,6 +7,7 @@ class Character:
         self.defence = defence
         self.fatness = fatness
         self.delay = (attack + defence + fatness)
+        self.delay_at_start = self.delay
         self.image = pygame.image.load(image).convert_alpha()
         self.image_fire = pygame.image.load(image_fire).convert_alpha()
         self.healthbar = pygame.Rect(50, 50, screen.width/2 - 100, 50)
@@ -16,8 +17,10 @@ class Character:
         self.winner_name_text = self.winner_font.render(name.upper() + " WINS!", False, "red", (10,19,22) )
     
 
-    def reset_hp(self):
+    def reset_character(self):
         self.hp = self.max_hp
+        self.delay = self.delay_at_start
+        
 
     def hp_loss(self, attacker, defender, screen):
         defender.hp -= attacker.attack
