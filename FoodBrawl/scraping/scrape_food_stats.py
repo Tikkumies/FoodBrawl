@@ -22,5 +22,4 @@ class get_food_stats:
         soup = BeautifulSoup(page.text, 'html.parser')
         parse_start = (str(soup).partition(stat_to_fetch)[2])
         result = int(float(parse_start.partition(",")[0]))
-        print(result)
         return result

@@ -72,7 +72,7 @@ class Loop:
                     if character1.hp < 1:
                         self.draw.blit(screen, character2.winner_name_text, 700, screen.heigth / 3)
                     elif character2.hp < 1:
-                        self.draw.blit(screen, character1.winner_name_text, 670, screen.height / 3)
+                        self.draw.blit(screen, character1.winner_name_text, 670, screen.heigth / 3)
                     # Go back to menu
                     if self.pygame.mouse.get_pressed()[0] and screen.menu_button.collidepoint(self.pygame.mouse.get_pos()):
                         character1.reset_character()
