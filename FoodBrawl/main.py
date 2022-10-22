@@ -23,7 +23,6 @@ if __name__ == "__main__":
     banaani_carbs = food_stats.get_stat(banaani_id, "carbs")
     banaani_protein = food_stats.get_stat(banaani_id, "protein")
     banaani_fat = food_stats.get_stat(banaani_id, "fat")
-
     # PyGame related stuff
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     pygame.init()

@@ -50,7 +50,7 @@ class Loop:
 
     def mouse_press_events_menu(self):
         if self.pygame.mouse.get_pressed()[0] and self.screen.exit_button.collidepoint(self.pygame.mouse.get_pos()):
-            running = False
+            self.running = False
         if self.pygame.mouse.get_pressed()[0] and self.screen.start_button.collidepoint(self.pygame.mouse.get_pos()):
             self.screen.game_screen_selection = "game"
             self.screen.music_menu.stop()
