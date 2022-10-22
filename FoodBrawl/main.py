@@ -33,6 +33,5 @@ if __name__ == "__main__":
     draw = Draw(screen, pygame)
     banaani = Character("Banaani", "game/images/BananaTransparent.png", "game/images/GunFire.png", banaani_energy, banaani_carbs, banaani_protein, banaani_fat, screen, pygame)
     omena = Character("Omena", "game/images/AppleWithGun.png", "game/images/Laser.png", omena_energy, omena_carbs, omena_protein, omena_fat, screen, pygame)
-    game_loop = Loop(60, draw, pygame)
-    print(omena_energy)
-    game_loop.loop(omena, banaani, screen)
+    game_loop = Loop(60, draw, omena, banaani, screen, pygame)
+    game_loop.loop()
