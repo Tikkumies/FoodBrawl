@@ -31,7 +31,7 @@ if __name__ == "__main__":
     screen = Screen(1920,1080, "game/images/Colosseum_Arena.jpg", "game/images/FoodBrawl.png", "game/images/Start.PNG", "game/images/Quit.PNG", "game/images/NewGame.PNG", "game/images/Menu.PNG",  pygame)
     draw = Draw(screen, pygame)
     banaani = Character("Banaani", "game/images/BananaTransparent.png", "game/images/GunFire.png", banaani_energy, banaani_carbs, banaani_protein, banaani_fat, screen, pygame)
-    omena = Character("Omena", "game/images/AppleWithGun.png", "game/images/Laser.png", 600, omena_carbs, omena_protein, omena_fat, screen, pygame)
+    omena = Character("Omena", "game/images/AppleWithGun.png", "game/images/Laser.png", omena_energy, omena_carbs, omena_protein, omena_fat, screen, pygame)
     game_loop = Loop(60, draw, pygame)
     print(omena_energy)
     game_loop.loop(omena, banaani, screen)
