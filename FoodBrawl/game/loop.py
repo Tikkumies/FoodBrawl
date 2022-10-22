@@ -18,6 +18,10 @@ class Loop:
 
             match screen.game_screen_selection:
                 case "menu":
+                    time += 1
+                    if time == 1:
+                        # Play menu music
+                        screen.music_menu.play(-1)
                     self.draw.blit(screen, screen.background, 0, 0)
                     self.draw.blit(screen, screen.logo, 770, 100)
                     self.draw.draw_rect(screen.start_button, screen.start_button_image, 770, 500)
@@ -26,8 +30,13 @@ class Loop:
                         running = False
                     if self.pygame.mouse.get_pressed()[0] and screen.start_button.collidepoint(self.pygame.mouse.get_pos()):
                         screen.game_screen_selection = "game"
+                        screen.music_menu.stop()
+                        time = 0
 
                 case "game":
+                    # Play fight music
+                    if time == 1:
+                        screen.music_fight.play(-1)
                     # Attack delay calculation
                     if char1_attack_time == time - 1:
                         char1_attack_time += character1.delay
@@ -78,15 +87,18 @@ class Loop:
                         character1.reset_character()
                         character2.reset_character()
                         screen.game_screen_selection = "menu"
+                        screen.music_fight.stop()
+                        time = 0
                     # Start new game
                     if self.pygame.mouse.get_pressed()[0] and screen.new_game_button.collidepoint(self.pygame.mouse.get_pos()):
                         character1.reset_character()
                         character2.reset_character()
                         screen.game_screen_selection = "game"
+                        screen.music_fight.stop()
+                        time = 0
 
                     char1_attack_time = 0
-                    char2_attack_time = 0 
-                    time = 0
+                    char2_attack_time = 0
 
             self.pygame.display.update()
             self.pygame.time.wait(100)
