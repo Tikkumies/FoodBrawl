@@ -19,11 +19,14 @@ class Loop:
         self.draw.blit(self.screen, self.character1.healthbar_name_text, self.screen.width - 170, 100)
         self.draw.blit(self.screen, self.character1.image, 850 , 200)
         self.draw.blit(self.screen, self.character2.image, 50, 400)
-        # Attack animations
+        # Attack animations and sounds
         if self.time == self.char2_attack_time:
             self.draw.blit(self.screen, self.character2.image_fire, 390 , 530)
+            self.character2.gun_sound.play()
+            
         if self.time == self.char1_attack_time:
             self.draw.blit(self.screen, self.character1.image_fire, 290 , 470)
+            self.character1.gun_sound.play()
 
     def health_checking(self):
         # Check if characters health is zero or less 
