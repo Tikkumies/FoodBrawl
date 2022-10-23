@@ -46,11 +46,14 @@ class Loop:
             self.screen.game_screen_selection = "game over"
 
     def attack_calculations(self):
+        # Attack delay updater
         if self.char1_attack_time == self.time - 1:
             self.char1_attack_time += self.character1.delay
         if self.char2_attack_time == self.time - 1:
             self.char2_attack_time += self.character2.delay
-        # Attack activated
+
+    def health_width_change(self):
+        # health bar width change after hp loss
         if self.char2_attack_time == self.time:
             self.character1.hp_loss(self.character2, self.character1, self.screen)
         if self.char1_attack_time == self.time:
@@ -119,19 +122,20 @@ class Loop:
                 case "fight start":
                     self.sounds_fight_start()
                     self.draw_fight_items()
+                    self.health_width_change()
                     self.draw_fight_start()
                     self.time += 1
                     if self.time > 40:
                         self.screen.game_screen_selection = "game"
                         self.time = 0
-
-                    
+         
                 case "game":
                     # Play fight music
                     if self.time == 1:
                         self.screen.music_fight.play(-1)
                         # Attack delay calculation
                     self.attack_calculations()
+                    self.health_width_change()
                     # Draw fight related stuff
                     self.draw_fight_items()
                     self.firing_effects()

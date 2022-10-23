@@ -2,7 +2,7 @@ class Character:
     def __init__ (self, name, image, image_fire, gun_sound, hp, attack, defence, fatness, screen, pygame):
         self.name = name
         self.hp = hp + fatness
-        self.max_hp = self.hp
+        self.max_hp = hp + fatness
         self.attack = attack
         self.defence = defence
         self.fatness = fatness
