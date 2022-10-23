@@ -28,9 +28,13 @@ if __name__ == "__main__":
     pygame.init()
     pygame.font.init()
     pygame.mixer.init()
-    screen = Screen(1920,1080, "game/images/Colosseum_Arena.jpg", "game/images/FoodBrawl.png", "game/images/Start.PNG", "game/images/Quit.PNG", "game/images/NewGame.PNG", "game/images/Menu.PNG", "game/sounds/WhosAfreidOf.mp3", "game/sounds/CrimsonSunset.mp3", pygame)
+    screen = Screen(1920,1080, "game/images/Colosseum_Arena.jpg", "game/images/FoodBrawl.png", "game/images/Start.PNG", "game/images/Quit.PNG", "game/images/NewGame.PNG", 
+                                "game/images/Menu.PNG", "game/images/FinalRound.png", "game/images/Fight.png", "game/sounds/WhosAfreidOf.mp3", "game/sounds/CrimsonSunset.mp3", 
+                                "game/sounds/FightStart.mp3", pygame)
     draw = Draw(screen, pygame)
-    banaani = Character("Banaani", "game/images/BananaTransparent.png", "game/images/GunFire.png", "game/sounds/GunShootSoundEffect.mp3",banaani_energy, banaani_carbs, banaani_protein, banaani_fat, screen, pygame)
-    omena = Character("Omena", "game/images/AppleWithGun.png", "game/images/Laser.png", "game/sounds/LaserGunSoundEffect.mp3", omena_energy, omena_carbs, omena_protein, omena_fat, screen, pygame)
+    banaani = Character("Banaani", "game/images/BananaTransparent.png", "game/images/GunFire.png", "game/sounds/GunShootSoundEffect.mp3",banaani_energy, banaani_carbs, 
+                        banaani_protein, banaani_fat, screen, pygame)
+    omena = Character("Omena", "game/images/AppleWithGun.png", "game/images/Laser.png", "game/sounds/LaserGunSoundEffect.mp3", omena_energy, omena_carbs, omena_protein,
+                        omena_fat, screen, pygame)
     game_loop = Loop(60, draw, omena, banaani, screen, pygame)
     game_loop.loop()

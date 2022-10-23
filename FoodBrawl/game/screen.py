@@ -1,5 +1,5 @@
 class Screen:
-    def __init__(self, width, heigth, background, logo, start_image, exit_image, new_game_image, menu_image, music_menu, music_fight, pygame):
+    def __init__(self, width, heigth, background, logo, start_image, exit_image, new_game_image, menu_image, final_round_image, fight_image, music_menu, music_fight, sound_start_fight, pygame):
         self.background = pygame.image.load(background)
         self.logo = pygame.image.load(logo)
         
@@ -15,9 +15,17 @@ class Screen:
         self.menu_image = pygame.image.load(menu_image)
         self.menu_button = self.menu_image.get_rect()
 
+        self.final_round_image = pygame.image.load(final_round_image)
+        self.final_round_rect = self.final_round_image.get_rect()
+
+        self.fight_image = pygame.image.load(fight_image)
+        self.fight_rect = self.fight_image.get_rect()
+
         self.music_menu = pygame.mixer.Sound(music_menu)
         
         self.music_fight = pygame.mixer.Sound(music_fight)
+
+        self.sound_fight = pygame.mixer.Sound(sound_start_fight)
 
         self.width = width
         self.heigth = heigth
