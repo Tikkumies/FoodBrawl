@@ -8,7 +8,10 @@ class Character:
         self.fatness = fatness
         self.delay = (attack + defence + fatness)
         self.delay_at_start = self.delay
-        self.image = pygame.image.load(image).convert_alpha()
+
+        self.image = pygame.image.load(image)
+        self.char = self.image.get_rect()
+        
         self.image_fire = pygame.image.load(image_fire).convert_alpha()
         self.healthbar = pygame.Rect(50, 50, screen.width/2 - 100, 50)
         self.healthbar_name_font = pygame.font.Font('freesansbold.ttf', 32)
