@@ -7,6 +7,11 @@ from game.loop import Loop
 from scraping.scrape_food_stats import get_food_stats
 
 if __name__ == "__main__":
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    pygame.mixer.pre_init(44100, -16, 1, 512)
+    pygame.mixer.init()
+    pygame.init()
+    pygame.font.init()
     # get food stats
     omena_id = "28942"
     banaani_id = "11049"
@@ -24,10 +29,6 @@ if __name__ == "__main__":
     banaani_protein = food_stats.get_stat(banaani_id, "protein")
     banaani_fat = food_stats.get_stat(banaani_id, "fat")
     # PyGame related stuff
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    pygame.init()
-    pygame.font.init()
-    pygame.mixer.init()
     screen = Screen(1920,1080, "game/images/Colosseum_Arena.jpg", "game/images/FoodBrawl.png", "game/images/Start.PNG", "game/images/Quit.PNG", "game/images/NewGame.PNG", 
                                 "game/images/Menu.PNG", "game/images/FinalRound.png", "game/images/Fight.png", "game/sounds/WhosAfreidOf.mp3", "game/sounds/CrimsonSunset.mp3", 
                                 "game/sounds/FightStart.mp3", pygame)

@@ -8,6 +8,7 @@ class Character:
         self.fatness = fatness
         self.delay = (attack + defence + fatness)
         self.delay_at_start = self.delay
+        self.screen = screen
 
         self.image = pygame.image.load(image)
         self.char = self.image.get_rect()
@@ -23,6 +24,7 @@ class Character:
     def reset_character(self):
         self.hp = self.max_hp
         self.delay = self.delay_at_start
+        self.healthbar.width = (self.hp / self.max_hp) * (self.screen.width/2 -100)
         
     def hp_loss(self, attacker, defender, screen):
         defender.hp -= attacker.attack

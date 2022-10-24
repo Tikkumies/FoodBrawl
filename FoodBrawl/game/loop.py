@@ -10,10 +10,10 @@ class Loop:
         self.time = 0
 
     def draw_fight_start(self):
-            if self.time < 24:
-                self.draw.draw_rect(self.screen.final_round_rect, self.screen.final_round_image, self.screen.width / 2 - self.screen.final_round_rect.width / 2, 300)
-            if self.time > 25 and self.time < 35:
-                self.draw.draw_rect(self.screen.fight_rect, self.screen.fight_image, self.screen.width / 2 - self.screen.fight_rect.width / 2, 300)
+        if self.time < 22:
+            self.draw.draw_rect(self.screen.final_round_rect, self.screen.final_round_image, self.screen.width / 2 - self.screen.final_round_rect.width / 2, 300)
+        if self.time > 22 and self.time < 35:
+            self.draw.draw_rect(self.screen.fight_rect, self.screen.fight_image, self.screen.width / 2 - self.screen.fight_rect.width / 2, 300)
 
     def sounds_fight_start(self):
         if self.time == 1:
@@ -122,7 +122,6 @@ class Loop:
                 case "fight start":
                     self.sounds_fight_start()
                     self.draw_fight_items()
-                    self.health_width_change()
                     self.draw_fight_start()
                     self.time += 1
                     if self.time > 40:
