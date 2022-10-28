@@ -72,23 +72,23 @@ class Loop:
         self.draw.draw_rect(self.screen.exit_button, self.screen.exit_button_image, self.screen.start_button.x, self.screen.start_button.y + self.screen.start_button.h)  
 
     def mouse_press_events_menu(self):
-        if self.pygame.mouse.get_pressed()[0] and self.screen.exit_button.collidepoint(self.pygame.mouse.get_pos()):
+        if self.screen.exit_button.collidepoint(self.pygame.mouse.get_pos()) and self.screen.game_screen_selection == "menu":
             self.running = False
-        if self.pygame.mouse.get_pressed()[0] and self.screen.start_button.collidepoint(self.pygame.mouse.get_pos()):
+        if self.screen.start_button.collidepoint(self.pygame.mouse.get_pos()) and self.screen.game_screen_selection == "menu":
             self.screen.game_screen_selection = "fight start"
             self.screen.music_menu.stop()
             self.time = 0
 
     def mouse_press_events_game_over(self):
         # Go back to menu
-        if self.pygame.mouse.get_pressed()[0] and self.screen.menu_button.collidepoint(self.pygame.mouse.get_pos()):
+        if self.screen.menu_button.collidepoint(self.pygame.mouse.get_pos()) and self.screen.game_screen_selection == "game over":
             self.character1.reset_character()
             self.character2.reset_character()
             self.screen.game_screen_selection = "menu"
             self.screen.music_fight.stop()
             self.time = 0
         # Start new game
-        if self.pygame.mouse.get_pressed()[0] and self.screen.new_game_button.collidepoint(self.pygame.mouse.get_pos()):
+        if self.screen.new_game_button.collidepoint(self.pygame.mouse.get_pos()) and self.screen.game_screen_selection == "game over":
             self.character1.reset_character()
             self.character2.reset_character()
             self.screen.game_screen_selection = "fight start"
@@ -112,6 +112,9 @@ class Loop:
         self.char2_attack_time = self.character2.delay
         while self.running:
             for event in self.pygame.event.get():
+                if event.type == self.pygame.MOUSEBUTTONUP:
+                    self.mouse_press_events_menu()
+                    self.mouse_press_events_game_over()
                 if event.type == self.pygame.QUIT:   
                     self.running = False
 
@@ -123,7 +126,7 @@ class Loop:
                         self.screen.music_menu.play(-1)
                     self.draw_menu_items()
                     # Check if some button is pressed
-                    self.mouse_press_events_menu()
+                    #self.mouse_press_events_menu()
 
                 case "fight start":
                     self.sounds_fight_start()
@@ -151,7 +154,7 @@ class Loop:
                 case "game over":
                     self.draw_fight_items()
                     self.draw_game_over_items()
-                    self.mouse_press_events_game_over()
+                    #self.mouse_press_events_game_over()
                     self.char1_attack_time = 0
                     self.char2_attack_time = 0
 
