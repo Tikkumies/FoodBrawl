@@ -19,4 +19,4 @@ Laita äänet päälle saadaksesi täyden nautinnon pelistä.
 
 ## Kuvaus
 
-Paketissa "scraping" haetaan ruoka ID:n ja ravintoarvon perusteella statsit hahmoille. Näitä arvoja käytetaan pygamen Character-luokan argumentteina. Pelin taisteluissa käytetään myös näiden perusteella laskettuja arvoja.
+Paketissa "scraping" haetaan ruoka ID:n ja ravintoarvon perusteella statsit hahmoille. Näitä arvoja käytetään pygamen Character-luokan argumentteina. Pelin taisteluissa käytetään myös näiden perusteella laskettuja arvoja.
