@@ -1,5 +1,5 @@
 class Character:
-    def __init__ (self, name, image, image_fire, gun_sound, hp, attack, defence, fatness, screen, pygame):
+    def __init__ (self, name, image, image_fire, image_dead, gun_sound, hp, attack, defence, fatness, screen, pygame):
         self.name = name
         self.hp = hp + fatness
         self.max_hp = hp + fatness
@@ -12,6 +12,8 @@ class Character:
 
         self.image = pygame.image.load(image)
         self.char = self.image.get_rect()
+
+        self.image_dead = pygame.image.load(image_dead)
         
         self.image_fire = pygame.image.load(image_fire).convert_alpha()
         self.healthbar = pygame.Rect(50, 50, screen.width/2 - 100, 50)

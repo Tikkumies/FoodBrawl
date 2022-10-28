@@ -27,8 +27,14 @@ class Loop:
         self.draw.draw_health_bar(self.character1, (self.screen.width / 2 + 50) + self.character1_hp  , 50)
         self.draw.blit(self.screen, self.character2.healthbar_name_text, self.screen.width - (self.screen.width - 50), 100)
         self.draw.blit(self.screen, self.character1.healthbar_name_text, self.screen.width - 170, 100)
-        self.draw.draw_rect( self.character1.char, self.character1.image, 850, 200)
-        self.draw.draw_rect( self.character2.char, self.character2.image, 50, 400)
+        if self.character1.hp < 1:
+            self.draw.draw_rect( self.character1.char, self.character1.image_dead, 1200, 500)
+        else:
+            self.draw.draw_rect( self.character1.char, self.character1.image, 850, 200)
+        if self.character2.hp < 1:
+            self.draw.draw_rect( self.character2.char, self.character2.image_dead, 50, 800)
+        else:
+            self.draw.draw_rect( self.character2.char, self.character2.image, 50, 400)
 
     def firing_effects(self):
         # Attack animations and sounds
